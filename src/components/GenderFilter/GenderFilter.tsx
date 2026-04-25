@@ -1,4 +1,4 @@
-import "./gender-filter.css";
+import styles from "./GenderFilter.module.css";
 
 type GenderFilterProps = {
   selectedGender: string[];
@@ -15,7 +15,7 @@ export default function GenderFilter({
         onClick={() => setSelectedGender(["M"])}
         className={
           selectedGender.length === 1 && selectedGender[0] === "M"
-            ? "active"
+            ? styles.active
             : ""
         }
       >
@@ -26,7 +26,7 @@ export default function GenderFilter({
         onClick={() => setSelectedGender(["F"])}
         className={
           selectedGender.length === 1 && selectedGender[0] === "F"
-            ? "active"
+            ? styles.active
             : ""
         }
       >
@@ -35,7 +35,7 @@ export default function GenderFilter({
 
       <button
         onClick={() => setSelectedGender(["M", "F"])}
-        className={selectedGender.length === 2 ? "active" : ""}
+        className={selectedGender.length === 2 ? styles.active : ""}
       >
         Both
       </button>

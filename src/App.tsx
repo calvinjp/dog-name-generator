@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 import "./App.css";
 import { getCategoriesData, getLettersData, getNamesData } from "./api/utils";
-import GenderFilter from "./components/gender-filter/gender-filter";
-import CategoryFilter from "./components/category-filter/category-filter";
-import NameFilter from "./components/name-filter/name-filter";
-import NamesList from "./components/names-list/names-list";
+import GenderFilter from "./components/GenderFilter/GenderFilter";
+import CategoryFilter from "./components/CategoryFilter/CategoryFilter";
+import NameFilter from "./components/NameFilter/NameFilter";
+import NamesList from "./components/NamesList/NamesList";
 
 export type PetName = {
   id: string;

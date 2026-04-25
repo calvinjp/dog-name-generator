@@ -1,4 +1,4 @@
-import "./category-filter.css";
+import styles from "./CategoryFilter.module.css";
 import type { Category, FilterGroup } from "../../App";
 
 type CategoryFilterProps = {

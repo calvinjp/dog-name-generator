@@ -2,7 +2,3 @@
   display: flex;
   gap: 8px;
 }
-
-.active {
-  background-color: red;
-}

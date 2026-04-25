@@ -1,4 +1,4 @@
-import "./names-list.css";
+import styles from "./NamesList.module.css";
 import type { Category, PetName } from "../../App";
 
 type NamesListProps = {
@@ -49,7 +49,7 @@ export default function NamesList({
 
   return (
     <div>
-      <div className="name-buttons">
+      <div className={styles.nameButtons}>
         {currentItems.map((petName) => (
           <button key={petName.id} onClick={() => setSelectedName(petName)}>
             {petName.title}

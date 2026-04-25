@@ -1,4 +1,4 @@
-import "./name-filter.css";
+import "./NameFilter.module.css";
 
 type NameFilterProps = {
   letters: string[];
