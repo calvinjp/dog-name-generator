@@ -21,6 +21,7 @@ type FilterGroup = {
   label: string;
   categoryIds: string[];
 };
+
 function App() {
   const [petNames, setPetNames] = useState<PetName[]>([]);
   const [letters, setLetters] = useState<string[]>([]);
@@ -32,11 +33,13 @@ function App() {
   const [selectedGender, setSelectedGender] = useState<string[]>(["M", "F"]);
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
   const [selectedName, setSelectedName] = useState<PetName>();
+  const [currentPage, setCurrentPage] = useState<number>(1);
 
   const filteredCategories = categories.filter((category) =>
     selectedFilterGroup?.categoryIds?.includes(category.id),
   );
 
+  // filters
   const filteredNames = petNames.filter((name) => {
     const matchesLetter = name.title.startsWith(selectedLetter);
     const matchesGender = name.gender.some((g) => selectedGender.includes(g));
@@ -46,6 +49,16 @@ function App() {
 
     return matchesLetter && matchesGender && matchesCategory;
   });
+
+  // pagination
+  const itemsPerPage = 11;
+
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+
+  const currentItems = filteredNames.slice(startIndex, endIndex);
+
+  const totalPages = Math.ceil(filteredNames.length / itemsPerPage);
 
   const selectedNameCategories = categories.filter((category) =>
     selectedName?.categories?.includes(category.id),
@@ -94,6 +107,11 @@ function App() {
     setSelectedName(petName);
     console.log(petName);
   }
+
+  // resets the page to 1 when new filters are applied
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [selectedLetter, selectedGender, selectedCategories, selectedFilterGroup]);
 
   return (
     <>
@@ -173,12 +191,25 @@ function App() {
         ))}
       </div>
       <div className="name-buttons">
-        {filteredNames.map((petName) => (
+        {currentItems.map((petName) => (
           <button key={petName.id} onClick={() => handleSelectName(petName)}>
             {petName.title}
           </button>
         ))}
       </div>
+
+      <button
+        onClick={() => setCurrentPage((prev) => prev + 1)}
+        disabled={currentPage === totalPages}
+      >
+        Next
+      </button>
+      <button
+        onClick={() => setCurrentPage((prev) => prev - 1)}
+        disabled={currentPage === 1}
+      >
+        Prev
+      </button>
     </>
   );
 }
