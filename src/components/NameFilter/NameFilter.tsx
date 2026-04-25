@@ -1,4 +1,4 @@
-import "./NameFilter.module.css";
+import styles from "./NameFilter.module.css";
 
 type NameFilterProps = {
   letters: string[];
@@ -19,17 +19,23 @@ export default function NameFilter({
     }
   }
   return (
-    <div className="button-row">
-      {letters.map((letter) => (
-        <button
-          key={letter}
-          onClick={() => {
-            handleLetterSelect(letter);
-          }}
-        >
-          {letter}{" "}
-        </button>
-      ))}
+    <div className={styles.container}>
+      <h2>All pets names</h2>
+      <div className={styles.buttonRow}>
+        {letters.map((letter) => (
+          <button
+            className={`${styles.letterButton} ${
+              selectedLetter === letter ? styles.active : ""
+            }`}
+            key={letter}
+            onClick={() => {
+              handleLetterSelect(letter);
+            }}
+          >
+            {letter}{" "}
+          </button>
+        ))}
+      </div>
     </div>
   );
 }

@@ -73,3 +73,7 @@ label {
 .active {
   transform: rotate(180deg);
 }
+
+.container {
+  height: 146px;
+}

@@ -39,7 +39,7 @@ export default function CategoryFilter({
     );
   }
   return (
-    <div>
+    <div className={styles.container}>
       <div className={styles.filterBar}>
         <h4>Filters:</h4>
         <div className={styles.buttonRow}>

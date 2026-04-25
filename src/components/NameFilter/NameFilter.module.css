@@ -1,4 +1,45 @@
-.button-row {
+.buttonRow {
   display: flex;
   gap: 8px;
+  justify-content: space-evenly;
+  background-color: #ffffff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  height: 69px;
+  align-items: center;
+  border-radius: 100px;
+}
+
+h2 {
+  font-family: Roboto Slab;
+  font-weight: 400;
+  font-style: Regular;
+  font-size: 30px;
+  line-height: 36px;
+  letter-spacing: 0px;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  padding-left: 165px;
+  padding-right: 165px;
+}
+
+.letterButton {
+  height: 37px;
+  width: 37px;
+  gap: 10px;
+  border-radius: 50%;
+  background: transparent;
+  outline: none;
+  border: none;
+  color: #3a3533;
+  font-family: "Roboto Slab", serif;
+  font-weight: 400;
+  font-size: 25px;
+}
+
+.active {
+  background-color: #e81c24;
+  color: white;
 }
