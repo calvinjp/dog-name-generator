@@ -1,5 +1,6 @@
 import styles from "./CategoryFilter.module.css";
 import type { Category, FilterGroup } from "../../App";
+import icon from "../../../public/icons/Chevron.svg";
 
 type CategoryFilterProps = {
   categories: Category[];
@@ -39,31 +40,48 @@ export default function CategoryFilter({
   }
   return (
     <div>
-      <div>
-        {/* <h1>Filters:</h1> */}
-        {filterGroups.map((filterGroup) => (
-          <button
-            key={filterGroup.id}
-            onClick={() => {
-              handleFilterGroupSelect(filterGroup);
-            }}
-          >
-            {filterGroup.label}
-          </button>
-        ))}
+      <div className={styles.filterBar}>
+        <h4>Filters:</h4>
+        <div className={styles.buttonRow}>
+          {filterGroups.map((filterGroup) => (
+            <button
+              className={styles.categoryButton}
+              key={filterGroup.id}
+              onClick={() => {
+                handleFilterGroupSelect(filterGroup);
+              }}
+            >
+              {filterGroup.label}
+              <img
+                src={icon}
+                alt="icon"
+                className={`${styles.chevron} ${
+                  selectedFilterGroup?.id === filterGroup.id
+                    ? styles.active
+                    : ""
+                }`}
+              />
+            </button>
+          ))}
+        </div>
       </div>
-      <div>
-        {filteredCategories.map((category) => (
-          <label key={category.id} style={{ display: "block" }}>
-            <input
-              type="checkbox"
-              checked={selectedCategories.includes(category.id)}
-              onChange={() => toggleCategory(category.id)}
-            />
-            {category.name}
-          </label>
-        ))}
-      </div>
+
+      {selectedFilterGroup ? (
+        <div className={styles.dropdown}>
+          {filteredCategories.map((category) => (
+            <label key={category.id}>
+              <input
+                type="checkbox"
+                checked={selectedCategories.includes(category.id)}
+                onChange={() => toggleCategory(category.id)}
+              />
+              {category.name}
+            </label>
+          ))}
+        </div>
+      ) : (
+        <></>
+      )}
     </div>
   );
 }
