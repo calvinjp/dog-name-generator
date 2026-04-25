@@ -10,35 +10,40 @@ export default function GenderFilter({
   setSelectedGender,
 }: GenderFilterProps) {
   return (
-    <div>
-      <button
-        onClick={() => setSelectedGender(["M"])}
-        className={
-          selectedGender.length === 1 && selectedGender[0] === "M"
-            ? styles.active
-            : ""
-        }
-      >
-        Male
-      </button>
+    <div className={styles.center}>
+      <h3>Choose your pet's gender</h3>
+      <div className={styles.buttonRow}>
+        <button
+          onClick={() => setSelectedGender(["M"])}
+          className={`${styles.genderButton} ${
+            selectedGender.length === 1 && selectedGender[0] === "M"
+              ? styles.active
+              : ""
+          }`}
+        >
+          Male
+        </button>
 
-      <button
-        onClick={() => setSelectedGender(["F"])}
-        className={
-          selectedGender.length === 1 && selectedGender[0] === "F"
-            ? styles.active
-            : ""
-        }
-      >
-        Female
-      </button>
+        <button
+          onClick={() => setSelectedGender(["F"])}
+          className={`${styles.genderButton} ${
+            selectedGender.length === 1 && selectedGender[0] === "F"
+              ? styles.active
+              : ""
+          }`}
+        >
+          Female
+        </button>
 
-      <button
-        onClick={() => setSelectedGender(["M", "F"])}
-        className={selectedGender.length === 2 ? styles.active : ""}
-      >
-        Both
-      </button>
+        <button
+          onClick={() => setSelectedGender(["M", "F"])}
+          className={`${styles.genderButton} ${
+            selectedGender.length === 2 ? styles.active : ""
+          }`}
+        >
+          Both
+        </button>
+      </div>
     </div>
   );
 }

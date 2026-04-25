@@ -1,3 +1,32 @@
+.genderButton {
+  gap: 10px;
+  padding: 10px 16px;
+  border-radius: 4px;
+  border: 1px solid #e81c24;
+  background-color: #f9f8f5;
+  color: #e81c24;
+  font-family: Roboto Slab;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+}
+
 .active {
-  background-color: red;
+  background-color: #e81c24;
+  color: white;
+}
+
+.center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 183px;
+}
+
+.buttonRow {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
 }
