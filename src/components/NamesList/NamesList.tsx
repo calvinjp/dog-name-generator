@@ -1,5 +1,7 @@
 import styles from "./NamesList.module.css";
 import type { Category, PetName } from "../../App";
+import chevron from "../../../public/icons/Chevron.svg";
+import male from "../../../public/icons/Male.svg";
 
 type NamesListProps = {
   petNames: PetName[];
@@ -48,30 +50,46 @@ export default function NamesList({
   const totalPages = Math.ceil(filteredNames.length / itemsPerPage);
 
   return (
-    <div>
-      <div className={styles.nameButtons}>
+    <div className={styles.container}>
+      <div className={styles.pagination}>
+        <button
+          className={styles.chevronButton}
+          onClick={() => setCurrentPage((prev) => prev - 1)}
+          disabled={currentPage === 1}
+        >
+          <img src={chevron} alt="icon" className={styles.chevronUp} />
+        </button>
+        <button
+          className={styles.chevronButton}
+          onClick={() => setCurrentPage((prev) => prev + 1)}
+          disabled={currentPage === totalPages}
+        >
+          <img src={chevron} alt="icon" className={styles.chevronDown} />
+        </button>
+      </div>
+      <div className={styles.buttonColumn}>
         {currentItems.map((petName) => (
-          <button key={petName.id} onClick={() => setSelectedName(petName)}>
+          <button
+            className={`${styles.nameButton} ${
+              selectedName === petName ? styles.active : ""
+            }`}
+            key={petName.id}
+            onClick={() => setSelectedName(petName)}
+          >
             {petName.title}
           </button>
         ))}
       </div>
 
-      <button
-        onClick={() => setCurrentPage((prev) => prev + 1)}
-        disabled={currentPage === totalPages}
-      >
-        Next
-      </button>
-      <button
-        onClick={() => setCurrentPage((prev) => prev - 1)}
-        disabled={currentPage === 1}
-      >
-        Prev
-      </button>
-
       <div>
-        <p>{selectedName?.gender}</p>
+        <div className={styles.gender}>
+          {selectedName?.gender.includes("M") ? (
+            <img src={male} alt="male" />
+          ) : (
+            <></>
+          )}
+          {selectedName?.gender.includes("F") ? <h3>Female</h3> : <></>}
+        </div>
         {selectedNameCategories.map((category) => (
           <p>{category.name}</p>
         ))}

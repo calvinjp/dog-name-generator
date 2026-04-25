@@ -1,5 +1,62 @@
-.nameButtons {
+.buttonColumn {
   display: flex;
   flex-direction: column;
   gap: 8px;
+}
+
+.nameButton {
+  background: transparent;
+  outline: none;
+  border: none;
+  color: #3a3533;
+  font-family: Roboto Slab;
+  font-weight: 300;
+  font-style: Light;
+  font-size: 35px;
+  line-height: 100%;
+  letter-spacing: -1px;
+}
+
+.container {
+  display: flex;
+  padding-left: 165px;
+  padding-right: 165px;
+}
+
+.pagination {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.chevronUp {
+  height: 32.5px;
+  width: 32px;
+  transform: rotate(180deg);
+}
+
+.chevronDown {
+  height: 32.5px;
+  width: 32px;
+}
+
+.chevronButton {
+  background: transparent;
+  outline: none;
+  border: none;
+}
+
+.active {
+  color: #e81c24;
+  font-family: Roboto Slab;
+  font-weight: 400;
+  font-style: Regular;
+  font-size: 45px;
+  line-height: 100%;
+  letter-spacing: 0px;
+}
+
+.gender {
+  display: flex;
+  flex-direction: row;
 }
