@@ -9,13 +9,14 @@
   border-radius: 100px;
 }
 
-h2 {
+.letterFilterHeader {
   font-family: Roboto Slab;
   font-weight: 400;
   font-style: Regular;
   font-size: 30px;
   line-height: 36px;
   letter-spacing: 0px;
+  margin: 10px;
 }
 
 .container {

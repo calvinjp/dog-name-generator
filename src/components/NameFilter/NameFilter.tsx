@@ -20,7 +20,7 @@ export default function NameFilter({
   }
   return (
     <div className={styles.container}>
-      <h2>All pets names</h2>
+      <p className={styles.letterFilterHeader}>All pets names</p>
       <div className={styles.buttonRow}>
         {letters.map((letter) => (
           <button

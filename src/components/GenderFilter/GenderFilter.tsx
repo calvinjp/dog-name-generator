@@ -11,7 +11,7 @@ export default function GenderFilter({
 }: GenderFilterProps) {
   return (
     <div className={styles.center}>
-      <h3>Choose your pet's gender</h3>
+      <p className={styles.genderHeader}>Choose your pet's gender</p>
       <div className={styles.buttonRow}>
         <button
           onClick={() => setSelectedGender(["M"])}
