@@ -23,4 +23,4 @@ Child components are presentational and modular, receiving data and callbacks vi
 ## Assumptions
 
 There doesn't seem to be any related name info from the data provided, so I just hardcoded it.
-Omitted the gender symbol on the additonal info because female symbol was not available. (Not part of functional requirements, plus looks it awkward if I try putting a placeholder)
+Omitted the gender symbol on the additonal info because female symbol was not available. (Not part of functional requirements, plus it looks awkward if I try putting a placeholder)
