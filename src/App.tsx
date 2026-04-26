@@ -17,7 +17,7 @@ export type PetName = {
 export type Category = {
   id: string;
   name: string;
-  description: string;
+  description: string | null;
 };
 
 export type FilterGroup = {

@@ -1,8 +1,7 @@
 import styles from "./NamesList.module.css";
 import type { Category, PetName } from "../../App";
-import chevron from "../../../public/icons/Chevron.svg";
-// import male from "../../../public/icons/Male.svg";
-import dog from "../../../public/images/Dog.png";
+import chevron from "../../icons/Chevron.svg";
+import dog from "../../images/Dog.png";
 
 type NamesListProps = {
   petNames: PetName[];

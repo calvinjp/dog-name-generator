@@ -1,6 +1,6 @@
 import styles from "./CategoryFilter.module.css";
 import type { Category, FilterGroup } from "../../App";
-import icon from "../../../public/icons/Chevron.svg";
+import icon from "../../icons/Chevron.svg";
 
 type CategoryFilterProps = {
   categories: Category[];
