@@ -49,6 +49,14 @@ export default function NamesList({
   const currentItems = filteredNames.slice(startIndex, endIndex);
   const totalPages = Math.ceil(filteredNames.length / itemsPerPage);
 
+  function handleSelectName(name: PetName) {
+    if (name === selectedName) {
+      setSelectedName(null);
+    } else {
+      setSelectedName(name);
+    }
+  }
+
   return (
     <div className={styles.container}>
       <div className={styles.nameListContainer}>
@@ -75,7 +83,7 @@ export default function NamesList({
                 selectedName === petName ? styles.active : ""
               }`}
               key={petName.id}
-              onClick={() => setSelectedName(petName)}
+              onClick={() => handleSelectName(petName)}
             >
               {petName.title}
             </button>
@@ -83,9 +91,10 @@ export default function NamesList({
         </div>
       </div>
 
-      <div className={styles.info}>
-        {/* Omitted the gender part, female symbol not available, not part of functional requirements, plus looks awkward if I try putting a placeholder */}
-        {/* <div className={styles.gender}>
+      {selectedName && (
+        <div className={styles.info}>
+          {/* Omitted the gender part, female symbol not available, not part of functional requirements, plus looks awkward if I try putting a placeholder */}
+          {/* <div className={styles.gender}>
           {selectedName?.gender.includes("M") ? (
             <img src={male} alt="male" />
           ) : (
@@ -93,20 +102,21 @@ export default function NamesList({
           )}
           {selectedName?.gender.includes("F") ? <h3>Female</h3> : <></>} 
        </div> */}
-        <div className={styles.categories}>
-          <p className={styles.category}>
-            {selectedNameCategories.map((c) => c.name).join(" - ")}
-          </p>
-        </div>
-        <p
-          className={styles.description}
-          dangerouslySetInnerHTML={{ __html: selectedName?.definition ?? "" }} // prevents the tags from showing up
-        />
-        <p className={styles.relatedNameHeader}>Related Name</p>
-        <p className={styles.relatedNames}>Abu Abby Abe</p>{" "}
-        {/* NOTE: There doesn't seem to be any related name info
+          <div className={styles.categories}>
+            <p className={styles.category}>
+              {selectedNameCategories.map((c) => c.name).join(" - ")}
+            </p>
+          </div>
+          <p
+            className={styles.description}
+            dangerouslySetInnerHTML={{ __html: selectedName?.definition ?? "" }} // prevents the tags from showing up
+          />
+          <p className={styles.relatedNameHeader}>Related Name</p>
+          <p className={styles.relatedNames}>Abu Abby Abe</p>{" "}
+          {/* NOTE: There doesn't seem to be any related name info
               from the data provided, hardcoded for now */}
-      </div>
+        </div>
+      )}
     </div>
   );
 }
