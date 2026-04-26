@@ -2,6 +2,9 @@
   display: flex;
   flex-direction: column;
   gap: 8px;
+  width: 80%;
+  box-sizing: border-box;
+  padding-right: 256px;
 }
 
 .nameButton {
@@ -21,12 +24,16 @@
   display: flex;
   padding-left: 165px;
   padding-right: 165px;
+  justify-content: space-between;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .pagination {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  width: 20%;
 }
 
 .chevronUp {
@@ -59,4 +66,61 @@
 .gender {
   display: flex;
   flex-direction: row;
+}
+
+.category {
+  font-family: Roboto;
+  font-weight: 400;
+  font-style: Regular;
+  font-size: 30px;
+  line-height: 100%;
+  letter-spacing: 0px;
+  vertical-align: middle;
+}
+
+.categories {
+  display: flex;
+  flex-direction: row;
+  border-bottom: 1px solid #c9c5b9;
+}
+
+.description {
+  font-family: Roboto;
+  font-weight: 300;
+  font-style: Light;
+  font-size: 30px;
+  line-height: 55px;
+  letter-spacing: 0px;
+  vertical-align: middle;
+  border-bottom: 1px solid #c9c5b9;
+}
+
+.relatedNameHeader {
+  font-family: Roboto;
+  font-weight: 400;
+  font-style: Regular;
+  font-size: 20px;
+  line-height: 45px;
+  letter-spacing: 0px;
+  vertical-align: middle;
+}
+
+.relatedNames {
+  font-family: Roboto;
+  font-weight: 300;
+  font-style: Light;
+  font-size: 20px;
+  line-height: 45px;
+  letter-spacing: 0px;
+  vertical-align: middle;
+}
+
+.info {
+  width: 70%;
+}
+
+.nameListContainer {
+  display: flex;
+  flex-direction: row;
+  width: 30%;
 }

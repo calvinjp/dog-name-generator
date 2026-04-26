@@ -1,7 +1,7 @@
 import styles from "./NamesList.module.css";
 import type { Category, PetName } from "../../App";
 import chevron from "../../../public/icons/Chevron.svg";
-import male from "../../../public/icons/Male.svg";
+// import male from "../../../public/icons/Male.svg";
 
 type NamesListProps = {
   petNames: PetName[];
@@ -51,53 +51,59 @@ export default function NamesList({
 
   return (
     <div className={styles.container}>
-      <div className={styles.pagination}>
-        <button
-          className={styles.chevronButton}
-          onClick={() => setCurrentPage((prev) => prev - 1)}
-          disabled={currentPage === 1}
-        >
-          <img src={chevron} alt="icon" className={styles.chevronUp} />
-        </button>
-        <button
-          className={styles.chevronButton}
-          onClick={() => setCurrentPage((prev) => prev + 1)}
-          disabled={currentPage === totalPages}
-        >
-          <img src={chevron} alt="icon" className={styles.chevronDown} />
-        </button>
-      </div>
-      <div className={styles.buttonColumn}>
-        {currentItems.map((petName) => (
+      <div className={styles.nameListContainer}>
+        <div className={styles.pagination}>
           <button
-            className={`${styles.nameButton} ${
-              selectedName === petName ? styles.active : ""
-            }`}
-            key={petName.id}
-            onClick={() => setSelectedName(petName)}
+            className={styles.chevronButton}
+            onClick={() => setCurrentPage((prev) => prev - 1)}
+            disabled={currentPage === 1}
           >
-            {petName.title}
+            <img src={chevron} alt="icon" className={styles.chevronUp} />
           </button>
-        ))}
+          <button
+            className={styles.chevronButton}
+            onClick={() => setCurrentPage((prev) => prev + 1)}
+            disabled={currentPage === totalPages}
+          >
+            <img src={chevron} alt="icon" className={styles.chevronDown} />
+          </button>
+        </div>
+        <div className={styles.buttonColumn}>
+          {currentItems.map((petName) => (
+            <button
+              className={`${styles.nameButton} ${
+                selectedName === petName ? styles.active : ""
+              }`}
+              key={petName.id}
+              onClick={() => setSelectedName(petName)}
+            >
+              {petName.title}
+            </button>
+          ))}
+        </div>
       </div>
 
-      <div>
-        <div className={styles.gender}>
+      <div className={styles.info}>
+        {/* Omitted the gender part, female symbol not available, not part of functional requirements, plus looks awkward if I try putting a placeholder */}
+        {/* <div className={styles.gender}>
           {selectedName?.gender.includes("M") ? (
             <img src={male} alt="male" />
           ) : (
             <></>
           )}
-          {selectedName?.gender.includes("F") ? <h3>Female</h3> : <></>}
+          {selectedName?.gender.includes("F") ? <h3>Female</h3> : <></>} 
+       </div> */}
+        <div className={styles.categories}>
+          <p className={styles.category}>
+            {selectedNameCategories.map((c) => c.name).join(" - ")}
+          </p>
         </div>
-        {selectedNameCategories.map((category) => (
-          <p>{category.name}</p>
-        ))}
         <p
+          className={styles.description}
           dangerouslySetInnerHTML={{ __html: selectedName?.definition ?? "" }} // prevents the tags from showing up
         />
-        <p>Related Name</p>
-        <p>Abu Abby Abe</p>{" "}
+        <p className={styles.relatedNameHeader}>Related Name</p>
+        <p className={styles.relatedNames}>Abu Abby Abe</p>{" "}
         {/* NOTE: There doesn't seem to be any related name info
               from the data provided, hardcoded for now */}
       </div>
