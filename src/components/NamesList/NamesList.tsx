@@ -2,6 +2,7 @@ import styles from "./NamesList.module.css";
 import type { Category, PetName } from "../../App";
 import chevron from "../../../public/icons/Chevron.svg";
 // import male from "../../../public/icons/Male.svg";
+import dog from "../../../public/images/Dog.png";
 
 type NamesListProps = {
   petNames: PetName[];
@@ -59,21 +60,27 @@ export default function NamesList({
 
   return (
     <div className={styles.container}>
-      <div className={styles.nameListContainer}>
+      <div
+        className={`${styles.nameListContainer} ${
+          !selectedName ? styles.centered : ""
+        }`}
+      >
+        {!selectedName && <img src={dog} alt="dog" />}
+
         <div className={styles.pagination}>
           <button
             className={styles.chevronButton}
             onClick={() => setCurrentPage((prev) => prev - 1)}
             disabled={currentPage === 1}
           >
-            <img src={chevron} alt="icon" className={styles.chevronUp} />
+            <img src={chevron} alt="iconUp" className={styles.chevronUp} />
           </button>
           <button
             className={styles.chevronButton}
             onClick={() => setCurrentPage((prev) => prev + 1)}
             disabled={currentPage === totalPages}
           >
-            <img src={chevron} alt="icon" className={styles.chevronDown} />
+            <img src={chevron} alt="iconDown" className={styles.chevronDown} />
           </button>
         </div>
         <div className={styles.buttonColumn}>
